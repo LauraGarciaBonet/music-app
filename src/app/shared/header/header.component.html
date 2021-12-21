@@ -1,1 +1,38 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark image">
+  <div class="container-fluid">
+    <img style="height: 80px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWR52HfJ5juz6AFxqvxtuQb0f61yBvtxIu5w&usqp=CAU" alt="logo">
+    <a class="navbar-brand" routerLink="/">Music</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLinkActive="/">
+          <a class="nav-link active" aria-current="page" routerLink="/songs/about">About Us</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/songs">List Songs</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/records">List Discs</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <li *ngIf="!authService.token"><a [routerLink]="['/login']" class="btn btn-outline-primary">Sign In</a></li>
+
+        <li *ngIf="authService.token" class="dropdown">
+          <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{authService.user.username}}
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+             <button (click)="logout()" class="dropdown-item" type="submit">Sign Out</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

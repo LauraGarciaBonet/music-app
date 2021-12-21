@@ -1,8 +1,9 @@
-export class Song {
+export class Records{
   id!:number;
   name!:string;
   gender!:string;
-  duration!:number;
+  singer!:string;
+  price!:number;
   image!:string;
   createdAt!:string;
 }

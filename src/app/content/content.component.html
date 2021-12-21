@@ -1,1 +1,51 @@
-<p>content works!</p>
+<div class="card  mb-3">
+  <div class="card-header bg-primary">
+    Songs
+  </div>
+
+  <div class="card-body text-secondary">
+    <h5>List Songs</h5>
+
+    <div class="my-2 text-left">
+      <button *ngIf="authService.token"
+        class="btn btn-rounded btn-success"
+        type="button"
+        [routerLink]="['/songs/create']"
+        >
+         Add New Song
+      </button>
+  </div>
+    <div class="body">
+<table class="table">
+  <thead class="table-light">
+    <tr style="text-align: center;">
+      <th scope="col">#</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Date</th>
+      <th style="text-align: center;" *ngIf="authService.token" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let song of songs">
+      <th scope="row"> {{song.id}} </th>
+      <td>
+        <img *ngIf="song.image" style="width: 64px; cursor: pointer;" src="http://localhost:8080/api/uploads/img/{{song.image}}" alt="{{song.image}}" class="img-thumbail rounted">
+
+        <img *ngIf="!song?.image" style="width: 64px; cursor: pointer" src=" {{imgSrc}} " alt="Sin foto" class="img-thumbail rounded">
+      </td>
+      <td>{{song.name}}</td>
+      <td>{{song.gender}}</td>
+      <td>{{song.duration}}</td>
+      <td>{{song.createdAt}}</td>
+      <td *ngIf="authService.token">
+        <button class="btn btn-secondary m-md-4" [routerLink]="['/songs/editar',song.id]" routerLinkActive="router-link-active"  >Editar</button>
+        <button style="margin-right: 5px;" class="btn btn-danger m-md-4" (click)="delete(song)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+

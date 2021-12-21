@@ -1,0 +1,54 @@
+<div class="card  mb-3">
+  <div class="card-header bg-warning">
+    Records
+  </div>
+
+  <div class="card-body text-secondary">
+    <h5>List Records</h5>
+
+    <div class="my-2 text-left">
+      <button *ngIf="authService.token"
+        class="btn btn-rounded btn-success"
+        type="button"
+        [routerLink]="['/records/create']"
+        >
+         Add New Record
+      </button>
+  </div>
+    <div class="body">
+<table class="table">
+  <thead class="table-light">
+    <tr style="text-align: center;">
+      <th scope="col">#</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Singer</th>
+      <th scope="col">Price</th>
+      <th scope="col">Date</th>
+      <th style="text-align: center;" *ngIf="authService.token" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let record of record">
+      <th scope="row"> {{record.id}} </th>
+      <td>
+        <img *ngIf="record.image" style="width: 64px; cursor: pointer;" src="http://localhost:8080/api/v2/uploads/img/{{record.image}}" alt="{{record.image}}" class="img-thumbail rounted">
+
+        <img *ngIf="!record?.image" style="width: 64px; cursor: pointer" src=" {{imgSrc}} " alt="Sin foto" class="img-thumbail rounded">
+      </td>
+      <td>{{record.name}}</td>
+      <td>{{record.gender}}</td>
+      <td>{{record.singer}}</td>
+      <td>{{record.price}}</td>
+      <td>{{record.createdAt}}</td>
+      <td *ngIf="authService.token">
+        <button class="btn btn-secondary m-md-4" [routerLink]="['/records/editar',record.id]" routerLinkActive="router-link-active"  >Editar</button>
+        <button style="margin-right: 5px;" class="btn btn-danger m-md-4" (click)="delete(record)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+

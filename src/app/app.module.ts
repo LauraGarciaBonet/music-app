@@ -7,6 +7,16 @@ import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './users/login/login.component';
 import { ContentComponent } from './content/content.component';
 import { FormNewSongComponent } from './content/form-new-song/form-new-song.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { SongService } from './services/song.service';
+import { AboutComponent } from './content/about/about.component';
+import { ContactComponent } from './content/contact/contact.component';
+import { HomeComponent } from './content/home/home.component';
+import { FormNewDiscComponent } from './content/form-new-disc/form-new-disc.component';
+import { ContentDiscComponent } from './content/content-disc/content-disc.component';
+import { RecordService } from './services/record.service';
 
 @NgModule({
   declarations: [
@@ -15,12 +25,22 @@ import { FormNewSongComponent } from './content/form-new-song/form-new-song.comp
     HeaderComponent,
     LoginComponent,
     ContentComponent,
-    FormNewSongComponent
+    FormNewSongComponent,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent,
+    FormNewDiscComponent,
+    ContentDiscComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SongService,
+    RecordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,66 @@
-<p>form-new-song works!</p>
+<div class="card bg-dark text-white">
+  <div class="card-header bg-primary">{{title}}</div>
+
+  <div class="card-body formNewSong" >
+    <form #songForm="ngForm">
+
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" name="nombre" [(ngModel)]="song.name" class="form-control newSong-input">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="gender" class="col-form-label col-sm-2">Gender</label>
+        <div class="col-sm-6">
+          <input type="text" name="gender"  [(ngModel)]="song.gender" class="form-control newSong-input">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="duration" class="col-form-label col-sm-2">Duration</label>
+        <div class="col-sm-6">
+          <input type="number" name="duration" [(ngModel)]="song.duration" class="form-control newSong-input">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="image" class="col-form-label col-sm-2">Imagen</label>
+        <div class="col-sm-6">
+          <input type="text" name="image" [(ngModel)]="song.image" class="form-control newSong-input">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="createAt" class="col-form-label col-sm-2">Fecha</label>
+        <div class="col-sm-6">
+          <input type="date"  class="form-control newSong-input" [(ngModel)]="song.createdAt" name="createAt" >
+
+        </div>
+      </div>
+
+      <!-- <div class="form-group row">
+        <label for="region" class="col-form-label col-sm-2">Región</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" style="width:500px;">
+            <option [ngValue]="undefined">--- selecionar una región ---</option>
+            <option *ngFor="let region of regiones" [ngValue]="region">{{region.nombre}}</option>
+          </select>
+        </div>
+      </div> -->
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="botton" (click)="create()" *ngIf="!song.id else elseBlock">Crear</button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-primary newSong-btn" role="button" (click)='update()'>Editar</button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
