@@ -17,6 +17,7 @@ import { HomeComponent } from './content/home/home.component';
 import { FormNewDiscComponent } from './content/form-new-disc/form-new-disc.component';
 import { ContentDiscComponent } from './content/content-disc/content-disc.component';
 import { RecordService } from './services/record.service';
+import { SelectImgComponent } from './content/select-img/select-img.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RecordService } from './services/record.service';
     ContactComponent,
     HomeComponent,
     FormNewDiscComponent,
-    ContentDiscComponent
+    ContentDiscComponent,
+    SelectImgComponent
   ],
   imports: [
     BrowserModule,
